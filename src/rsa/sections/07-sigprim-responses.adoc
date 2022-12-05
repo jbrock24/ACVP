@@ -6,12 +6,19 @@ Each test group contains an array of one or more test cases. Each test case is a
 The following tables describe the JSON elements for the test case responses for RSA / Signature Primitive / * .
 
 [[rsa_sigprim_vs_tr_table]]
-.RSA Signature Primitive v1.0 Test Case Results JSON Object
+.RSA Signature Primitive Test Case Results JSON Object
 |===
+| SignaturePrimitive | v1.0
 | JSON Value | Description | JSON type
 
 | tcId | Numeric identifier for the test case | integer
 | signature | If the message can be signed, the signature. If the encoded value is shorter than the key modulus it should be padded at the front with zero bytes. | hex
+| testPassed | If the message could not be signed | boolean
+
+| SignaturePrimitive | v2.0
+| JSON Value | Description | JSON type
+
+| tcId | Numeric identifier for the test case | integer
 | testPassed | If the message could not be signed | boolean
 |===
 
@@ -48,39 +55,30 @@ The following is an example of the response for RSA / Signature Primitive / 1.0 
 }
 ----
 
-[[rsa_sigprimV2_0_vs_tr_table]]
- .RSA Signature Primitive 2.0 Test Case Results JSON Object
- |===
- | JSON Value | Description | JSON type
+The following is an example of the response for RSA / Signature Primitive / v2.0 .
 
- | tcId | Numeric identifier for the test case | integer
- | testPassed | If the message could not be signed | boolean
- |===
-
- The following is an example of the response for RSA / Signature Primitive / v2.0 .
-
- [source, json]
- ----
- {
-   "vsId": 0,
-   "algorithm": "RSA",
-   "mode": "signaturePrimitive",
-   "revision": "2.0",
-   "isSample": true,
-   "testGroups": [
-     {
-       "tgId": 1,
-       "tests": [
-         {
-           "tcId": 1,
- 		      "testPassed": true,
-         },
-         {
-           "tcId": 2,
-           "testPassed": false
-         }
-       ]
-     }
-   ]
- }
- ----
+[source, json]
+----
+{
+  "vsId": 0,
+  "algorithm": "RSA",
+  "mode": "signaturePrimitive",
+  "revision": "2.0",
+  "isSample": true,
+  "testGroups": [
+    {
+      "tgId": 1,
+      "tests": [
+        {
+          "tcId": 1,
+        "testPassed": true,
+        },
+        {
+          "tcId": 2,
+          "testPassed": false
+        }
+      ]
+    }
+  ]
+}
+----
